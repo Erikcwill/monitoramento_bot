@@ -1,1 +1,1 @@
-# Dependências do projeto
+python-telegram-bot==20.1
