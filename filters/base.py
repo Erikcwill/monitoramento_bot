@@ -1,1 +1,1 @@
-# Filtro base para reutilização
+
