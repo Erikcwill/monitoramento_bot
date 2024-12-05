@@ -2,7 +2,7 @@
 
 from telegram import Update
 from telegram.ext import ContextTypes
-from filters import zerados, maiores
+from filters import zerados, maiores, alerta
 from handlers.mensagens import mensagens_recebidas
 
 async def callback_botao(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -18,5 +18,9 @@ async def callback_botao(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif query.data == 'filtrar_maiores' and mensagem:
         pontos_maiores = maiores.filtrar_pontos_maiores(mensagem)
         await query.edit_message_text(text=pontos_maiores)
+    elif query.data == 'filtrar_alerta' and mensagem:
+        pontos_alerta = alerta.filtrar_pontos_com_alerta(mensagem)
+        await query.edit_message_text(text=pontos_alerta)
+        
     else:
         await query.edit_message_text(text="Nenhuma mensagem foi recebida para processar.")
